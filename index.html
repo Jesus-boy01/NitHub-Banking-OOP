@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- tailwind css -->
     <link href="/dist/output.css" rel="stylesheet">
+    <!-- custom css -->
+    <link rel="stylesheet" href="css/index.css">
     <!-- ionicon cdn -->
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <title>NitBank</title>
@@ -14,15 +16,15 @@
     <!-- info-section -->
     <section id="info-section" class="bg-[#182143] text-white py-1">
         <div class="header-info xl:w-[80%] m-[auto] xl:mx-32 lg:mx-10 md:mx-6 flex justify-between">
-            <div class="header-contact flex items-center">
+            <div class="header-contact flex flex-wrap items-center">
                 <div>
-                    <p><span><i class="ion-location xl:mr-3 text-[#88C417] text-lg"></i></span> 6, Commercial Road, University Of Lagos <span class="mx-3">&verbar;</span></p>
+                    <p><span><i class="ion-location xl:mr-3 lg:mr-3 md:mr-2 text-[#88C417] text-lg"></i></span> 6, Commercial Road, University Of Lagos <span class="mx-3">&verbar;</span></p>
                 </div>
                 <div>
-                    <p><span><i class="ion-ios-telephone xl:mr-3 text-[#88C417] text-lg"></i></span>(123) 456-78-910 <span class="mx-3">&verbar;</span></p>
+                    <p><span><i class="ion-ios-telephone xl:mr-3 lg:mr-3 md:mr-2 text-[#88C417] text-lg"></i></span>(123) 456-78-910 <span class="mx-3">&verbar;</span></p>
                 </div>
                 <div>
-                    <p><span><i class="ion-email xl:mr-3 text-[#88C417] text-lg"></i></span>info@nithub.com</p>
+                    <p><span><i class="ion-email xl:mr-3 lg:mr-3 md:mr-2 text-[#88C417] text-lg"></i></span>info@nithub.com</p>
                 </div>
             </div>
             <div class="create-account">
@@ -54,7 +56,7 @@
     </section>
     <!-- account-section -->
     <section id="account-section" class="text-white" style="background-image: url('./img/hero-bg.jpg'); height: 100vh; background-size: cover; background-repeat: no-repeat;">
-        <div class="user-account flex justify-evenly">
+        <div class="user-account flex flex-wrap justify-evenly">
             <div class="account-invite xl:w-[40%] lg:w-[40%] md:w-[35%] sm:w-[30%] w-[30%]">
                 <h1 class="xl:text-5xl lg:text-5xl md:text-4xl sm:text-2xl text-xl xl:pl-24 xl:pt-52 lg:pl-16 lg:pt-52 md:pl-10 md:pt-44 pl-6 pt-32 font-semibold">Join us today,<br> Create an account with NitBank</h1>
                 <p class="text-xl xl:pl-24 xl:pt-10 lg:pl-16 lg:pt-10 md:pl-10 md:pt-10 pl-6 pt-6 font-semibold">Your money is safe with us</p>
@@ -92,7 +94,7 @@
                     </div>
                     <div class="row2 mb-6">
                         <div class="submit-form">
-                            <button type="submit" id="create-account" class="w-[80%] bg-[#88C417] hover:bg-[#182143] text-white text-lg py-3 px-3 mt-6 rounded">Create Account</button>
+                            <button type="submit" id="create-account" class="xl:w-[80%] lg:w-[80%] bg-[#88C417] hover:bg-[#182143] text-white text-lg py-3 px-3 mt-6 rounded">Create Account</button>
                         </div>
                     </div>
                 </form>
@@ -101,7 +103,7 @@
     </section>
     <!-- account-details -->
     <section id="account-information" class="mt-20">
-        <div class="user-account-info flex">
+        <div class="user-account-info flex flex-wrap">
             <div class="account-details w-[48%]">
                 <div class="form-title pb-7 text-center">
                     <p class="text-3xl font-semibold">Account Details</p>
@@ -150,7 +152,7 @@
     </section>
     <!-- banking-transaction-section -->
     <section id="banking-transaction-section" class="mt-20" style="background-image: url('./img/hero-bg.jpg'); height: 100vh; background-size: cover; background-repeat: no-repeat;">
-        <div class="banking-transactions flex justify-evenly text-white">
+        <div class="banking-transactions flex flex-wrap justify-evenly text-white">
             <div class="make-deposit text-center xl-w[31%] lg-w[31%]">
                 <div class="user-deposit">
                     <form action="#" class="bg-white text-black xl:w-[75%] lg:w-[90%] md:w-[90%] sm:w-[90%] w-[90%] m-auto text-center py-8 rounded xl:mt-16" id="reset-depo-form">

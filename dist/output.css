@@ -2543,6 +2543,10 @@ video {
     width: 90%;
   }
 
+  .sm\:w-\[\] {
+    width: ;
+  }
+
   .sm\:text-2xl {
     font-size: 1.5rem;
     line-height: 2rem;
@@ -2557,6 +2561,10 @@ video {
   .md\:mx-6 {
     margin-left: 1.5rem;
     margin-right: 1.5rem;
+  }
+
+  .md\:mr-2 {
+    margin-right: 0.5rem;
   }
 
   .md\:mr-5 {
@@ -2612,6 +2620,10 @@ video {
     margin-right: 2.5rem;
   }
 
+  .lg\:mr-3 {
+    margin-right: 0.75rem;
+  }
+
   .lg\:mr-9 {
     margin-right: 2.25rem;
   }
@@ -2626,6 +2638,10 @@ video {
 
   .lg\:w-\[50\%\] {
     width: 50%;
+  }
+
+  .lg\:w-\[80\%\] {
+    width: 80%;
   }
 
   .lg\:w-\[90\%\] {
