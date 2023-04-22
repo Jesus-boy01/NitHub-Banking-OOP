@@ -1,9 +1,9 @@
 /*---- account section ----*/
- input[type="text"]{
+ /* input[type="text"]{
     width: 80%;
-}
+} */
 
-@media(min-width: 640px){
+@media(max-width: 640px){
     /*---- account section ----*/
     input[type="text"]{
         width: 80%;

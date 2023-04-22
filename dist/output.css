@@ -702,6 +702,10 @@ video {
   margin-top: 1.5rem;
 }
 
+.mb-10 {
+  margin-bottom: 2.5rem;
+}
+
 .box-border {
   box-sizing: border-box;
 }
@@ -815,6 +819,14 @@ video {
 
 .w-\[90\%\] {
   width: 90%;
+}
+
+.w-\[\] {
+  width: ;
+}
+
+.w-\[50\%\] {
+  width: 50%;
 }
 
 .flex-shrink {
@@ -1936,6 +1948,21 @@ video {
   padding-bottom: 2rem;
 }
 
+.py-5 {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+.py-32 {
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+.py-20 {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
 .pb-7 {
   padding-bottom: 1.75rem;
 }
@@ -2543,10 +2570,6 @@ video {
     width: 90%;
   }
 
-  .sm\:w-\[\] {
-    width: ;
-  }
-
   .sm\:text-2xl {
     font-size: 1.5rem;
     line-height: 2rem;
@@ -2571,6 +2594,10 @@ video {
     margin-right: 1.25rem;
   }
 
+  .md\:mt-28 {
+    margin-top: 7rem;
+  }
+
   .md\:flex {
     display: flex;
   }
@@ -2585,6 +2612,10 @@ video {
 
   .md\:w-\[90\%\] {
     width: 90%;
+  }
+
+  .md\:flex-wrap {
+    flex-wrap: wrap;
   }
 
   .md\:pl-10 {
@@ -2628,6 +2659,14 @@ video {
     margin-right: 2.25rem;
   }
 
+  .lg\:mt-32 {
+    margin-top: 8rem;
+  }
+
+  .lg\:mt-28 {
+    margin-top: 7rem;
+  }
+
   .lg\:flex {
     display: flex;
   }
@@ -2646,6 +2685,10 @@ video {
 
   .lg\:w-\[90\%\] {
     width: 90%;
+  }
+
+  .lg\:flex-wrap {
+    flex-wrap: wrap;
   }
 
   .lg\:pl-16 {
@@ -2697,6 +2740,22 @@ video {
     margin-top: 4rem;
   }
 
+  .xl\:mb-32 {
+    margin-bottom: 8rem;
+  }
+
+  .xl\:mt-32 {
+    margin-top: 8rem;
+  }
+
+  .xl\:mt-2 {
+    margin-top: 0.5rem;
+  }
+
+  .xl\:mt-20 {
+    margin-top: 5rem;
+  }
+
   .xl\:flex {
     display: flex;
   }
@@ -2717,6 +2776,10 @@ video {
     width: 80%;
   }
 
+  .xl\:pb-32 {
+    padding-bottom: 8rem;
+  }
+
   .xl\:pb-5 {
     padding-bottom: 1.25rem;
   }
@@ -2735,6 +2798,18 @@ video {
 
   .xl\:pt-52 {
     padding-top: 13rem;
+  }
+
+  .xl\:pt-2 {
+    padding-top: 0.5rem;
+  }
+
+  .xl\:pt-24 {
+    padding-top: 6rem;
+  }
+
+  .xl\:pt-28 {
+    padding-top: 7rem;
   }
 
   .xl\:text-4xl {
