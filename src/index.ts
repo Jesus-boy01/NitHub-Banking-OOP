@@ -8,15 +8,15 @@ class BankingSystem {
         this.accountNumber = accNumber;
     }
 
-    get getBankName() {
+    get getBankName(): string {
         return BankingSystem.bankName;
     }
 
-    get getAccountName() {
+    get getAccountName(): string {
         return this.accountName;
     }
 
-    get getAccountNumber() {
+    get getAccountNumber(): number {
         return this.accountNumber;
     }
 
@@ -63,19 +63,19 @@ class BankAccount extends BankingSystem {
         }
     }
 
-    get userAccountBalance() {
-        return `Account Balance: $${this.accountBalance}`
+    get userAccountBalance(): number {
+        return this.accountBalance;
     }
 
-    get getTypeOfAccount() {
+    get getTypeOfAccount(): string {
         return this.typeOfAccount;
     }
 
-    get getAccountPin() {
+    get getAccountPin(): number {
         return this.#accountPin;
     }
 
-    verifyPin(pin: number) {
+    verifyPin(pin: number): boolean {
         if (this.#accountPin === pin) {
             return true;
         } else {
@@ -87,11 +87,19 @@ class BankAccount extends BankingSystem {
 
 let createAccount = document?.getElementById("create-account");
 let getGlobalBank = document.getElementById("get-global-bank");
+let getUserAccountName = document.getElementById("get-user-account-name");
+let getUserAccountNumber = document.getElementById("get-user-account-number");
+let getUserAccountBalance = document.getElementById("get-user-account-balance");
+let getUserAccountType = document.getElementById("get-user-account-type");
 let resetForm: HTMLFormElement;
 resetForm = <HTMLFormElement>document.getElementById("reset-form");
 
 createAccount?.addEventListener('click', createUserAccount);
 getGlobalBank?.addEventListener('click', getGlobalBankName);
+getUserAccountName?.addEventListener('click', getMyUserAccountName);
+getUserAccountNumber?.addEventListener('click', getMyUserAccountNumber);
+getUserAccountBalance?.addEventListener('click', getMyUserAccountBalance);
+getUserAccountType?.addEventListener('click', getMyUserAccountType);
 
 let bamiAccount: BankAccount | null;
 
@@ -107,19 +115,50 @@ function createUserAccount(e?: any) {
 
 
     bamiAccount = new BankAccount(userAccountName.value, Number(userAccountNumber.value),userAccountType.value, boolPossessAtm, Number(userAccountPin.value)); 
+
+    resetAccountForm(e);
 }
 
 
 function getGlobalBankName(){
-    // e.preventDefault();
-
     if (typeof document !== 'undefined') {
-        const globalBankName = document.querySelector(".insert-bank-name") as HTMLInputElement;
+        const globalBankName = document.querySelector(".insert-bank-name") as HTMLParagraphElement;
 
-        globalBankName.value = bamiAccount?.getBankName || "";
+        globalBankName.innerText = bamiAccount?.getBankName || "";
     }
 }
 
+function getMyUserAccountName(){
+    if (typeof document !== 'undefined') {
+        const myUserAccountName = document.querySelector(".insert-account-name") as HTMLParagraphElement;
+
+        myUserAccountName.innerText = bamiAccount?.getAccountName || "";
+    }
+}
+
+function getMyUserAccountNumber(){
+    if (typeof document !== 'undefined') {
+        const myUserAccountNumber = document.querySelector(".insert-account-number") as HTMLParagraphElement;
+
+        myUserAccountNumber.innerText = bamiAccount?.getAccountNumber.toString() || "";
+    }
+}
+
+function getMyUserAccountBalance(){
+    if (typeof document !== 'undefined') {
+        const myUserAccountBalance = document.querySelector(".insert-account-balance") as HTMLParagraphElement;
+
+        myUserAccountBalance.innerText = bamiAccount?.userAccountBalance.toString() || "";
+    }
+}
+
+function getMyUserAccountType(){
+    if (typeof document !== 'undefined') {
+        const myUserAccountType = document.querySelector(".insert-account-type") as HTMLParagraphElement;
+
+        myUserAccountType.innerText = bamiAccount?.getTypeOfAccount || "";
+    }
+}
 
 
 resetForm?.addEventListener('submit', resetAccountForm);
@@ -129,15 +168,6 @@ function resetAccountForm(e: any){
 
     resetForm?.reset();
 }
-
-// function getGlobalBankName(e: any, globalBank: object | any){
-//     e.preventDefault();
-
-//     if (typeof document !== 'undefined'){
-//         const globalBankName = document.getElementById("insert-bank-name") as HTMLInputElement;  
-//         globalBankName.value = globalBank.getBankName();  
-//     }
-// }
 
 
 const toluAccount = new BankAccount("Tolu Dada", 3567854673, "Savings Account", true, 2348);

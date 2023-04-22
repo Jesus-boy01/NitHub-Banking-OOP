@@ -65,7 +65,7 @@ class BankAccount extends BankingSystem {
         }
     }
     get userAccountBalance() {
-        return `Account Balance: $${this.accountBalance}`;
+        return this.accountBalance;
     }
     get getTypeOfAccount() {
         return this.typeOfAccount;
@@ -85,10 +85,18 @@ class BankAccount extends BankingSystem {
 _BankAccount_accountPin = new WeakMap();
 let createAccount = document === null || document === void 0 ? void 0 : document.getElementById("create-account");
 let getGlobalBank = document.getElementById("get-global-bank");
+let getUserAccountName = document.getElementById("get-user-account-name");
+let getUserAccountNumber = document.getElementById("get-user-account-number");
+let getUserAccountBalance = document.getElementById("get-user-account-balance");
+let getUserAccountType = document.getElementById("get-user-account-type");
 let resetForm;
 resetForm = document.getElementById("reset-form");
 createAccount === null || createAccount === void 0 ? void 0 : createAccount.addEventListener('click', createUserAccount);
 getGlobalBank === null || getGlobalBank === void 0 ? void 0 : getGlobalBank.addEventListener('click', getGlobalBankName);
+getUserAccountName === null || getUserAccountName === void 0 ? void 0 : getUserAccountName.addEventListener('click', getMyUserAccountName);
+getUserAccountNumber === null || getUserAccountNumber === void 0 ? void 0 : getUserAccountNumber.addEventListener('click', getMyUserAccountNumber);
+getUserAccountBalance === null || getUserAccountBalance === void 0 ? void 0 : getUserAccountBalance.addEventListener('click', getMyUserAccountBalance);
+getUserAccountType === null || getUserAccountType === void 0 ? void 0 : getUserAccountType.addEventListener('click', getMyUserAccountType);
 let bamiAccount;
 function createUserAccount(e) {
     e.preventDefault();
@@ -99,11 +107,36 @@ function createUserAccount(e) {
     const boolPossessAtm = (possessAtm.value.toLowerCase() === "true");
     const userAccountPin = document === null || document === void 0 ? void 0 : document.getElementById("account-pin");
     bamiAccount = new BankAccount(userAccountName.value, Number(userAccountNumber.value), userAccountType.value, boolPossessAtm, Number(userAccountPin.value));
+    resetAccountForm(e);
 }
 function getGlobalBankName() {
     if (typeof document !== 'undefined') {
         const globalBankName = document.querySelector(".insert-bank-name");
-        globalBankName.value = (bamiAccount === null || bamiAccount === void 0 ? void 0 : bamiAccount.getBankName) || "";
+        globalBankName.innerText = (bamiAccount === null || bamiAccount === void 0 ? void 0 : bamiAccount.getBankName) || "";
+    }
+}
+function getMyUserAccountName() {
+    if (typeof document !== 'undefined') {
+        const myUserAccountName = document.querySelector(".insert-account-name");
+        myUserAccountName.innerText = (bamiAccount === null || bamiAccount === void 0 ? void 0 : bamiAccount.getAccountName) || "";
+    }
+}
+function getMyUserAccountNumber() {
+    if (typeof document !== 'undefined') {
+        const myUserAccountNumber = document.querySelector(".insert-account-number");
+        myUserAccountNumber.innerText = (bamiAccount === null || bamiAccount === void 0 ? void 0 : bamiAccount.getAccountNumber.toString()) || "";
+    }
+}
+function getMyUserAccountBalance() {
+    if (typeof document !== 'undefined') {
+        const myUserAccountBalance = document.querySelector(".insert-account-balance");
+        myUserAccountBalance.innerText = (bamiAccount === null || bamiAccount === void 0 ? void 0 : bamiAccount.userAccountBalance.toString()) || "";
+    }
+}
+function getMyUserAccountType() {
+    if (typeof document !== 'undefined') {
+        const myUserAccountType = document.querySelector(".insert-account-type");
+        myUserAccountType.innerText = (bamiAccount === null || bamiAccount === void 0 ? void 0 : bamiAccount.getTypeOfAccount) || "";
     }
 }
 resetForm === null || resetForm === void 0 ? void 0 : resetForm.addEventListener('submit', resetAccountForm);
