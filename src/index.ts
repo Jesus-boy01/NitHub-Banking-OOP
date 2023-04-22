@@ -38,7 +38,7 @@ class BankAccount extends BankingSystem {
         this.#accountPin = accPin;
     }
 
-    set userDeposit(amount: number) {
+    userDeposit(amount: number) {
         if (amount > 0) {
             this.accountBalance += amount;
         } else {
@@ -46,7 +46,7 @@ class BankAccount extends BankingSystem {
         }
     }
 
-    set userWithdrawal(amount: number) {
+    userWithdrawal(amount: number) {        
         if ((amount <= this.accountBalance) && (amount > 0) && (this.accountBalance !== 0)) {
             this.accountBalance -= amount;
         } else {
@@ -63,8 +63,8 @@ class BankAccount extends BankingSystem {
         }
     }
 
-    get userAccountBalance(): number {
-        return this.accountBalance;
+    get userAccountBalance(): string {
+        return `$${this.accountBalance}`;
     }
 
     get getTypeOfAccount(): string {
@@ -85,14 +85,24 @@ class BankAccount extends BankingSystem {
 }
 
 
-let createAccount = document?.getElementById("create-account");
+let createAccount = document.getElementById("create-account");
 let getGlobalBank = document.getElementById("get-global-bank");
 let getUserAccountName = document.getElementById("get-user-account-name");
 let getUserAccountNumber = document.getElementById("get-user-account-number");
 let getUserAccountBalance = document.getElementById("get-user-account-balance");
 let getUserAccountType = document.getElementById("get-user-account-type");
+let userDepositAmount = document.getElementById("deposit");
+let userWithdrawAmount = document.getElementById("withdraw");
+let userTransferAmount = document.getElementById("transfer");
+
 let resetForm: HTMLFormElement;
 resetForm = <HTMLFormElement>document.getElementById("reset-form");
+let resetDepoForm: HTMLFormElement;
+resetDepoForm = <HTMLFormElement>document.getElementById("reset-depo-form");
+let resetWithdrawForm: HTMLFormElement;
+resetWithdrawForm = <HTMLFormElement>document.getElementById("reset-withdraw-form");
+let resetTransferForm: HTMLFormElement;
+resetTransferForm = <HTMLFormElement>document.getElementById("reset-transfer-form");
 
 createAccount?.addEventListener('click', createUserAccount);
 getGlobalBank?.addEventListener('click', getGlobalBankName);
@@ -100,6 +110,9 @@ getUserAccountName?.addEventListener('click', getMyUserAccountName);
 getUserAccountNumber?.addEventListener('click', getMyUserAccountNumber);
 getUserAccountBalance?.addEventListener('click', getMyUserAccountBalance);
 getUserAccountType?.addEventListener('click', getMyUserAccountType);
+userDepositAmount?.addEventListener('click', myUserDeposit);
+userWithdrawAmount?.addEventListener('click', myUserWithdraw);
+userTransferAmount?.addEventListener('click', myUserTransfer);
 
 let bamiAccount: BankAccount | null;
 
@@ -148,7 +161,7 @@ function getMyUserAccountBalance(){
     if (typeof document !== 'undefined') {
         const myUserAccountBalance = document.querySelector(".insert-account-balance") as HTMLParagraphElement;
 
-        myUserAccountBalance.innerText = bamiAccount?.userAccountBalance.toString() || "";
+        myUserAccountBalance.innerText = bamiAccount?.userAccountBalance || "";
     }
 }
 
@@ -160,14 +173,34 @@ function getMyUserAccountType(){
     }
 }
 
+function myUserDeposit(){
+    const depositAmount = Number((document.getElementById("deposit-amount") as HTMLInputElement).value);
+    bamiAccount?.userDeposit(depositAmount);
+}
+
+function myUserWithdraw(){
+    const withdrawAmount = Number((document.getElementById("withdraw-amount") as HTMLInputElement).value);
+    bamiAccount?.userWithdrawal(withdrawAmount);
+}
+
+function myUserTransfer(){
+    const transferAmount = Number((document.getElementById("transfer-amount") as HTMLInputElement).value);
+
+    bamiAccount?.userTransfer(transferAmount, toluAccount, bamiAccount.getAccountPin);    
+}
 
 resetForm?.addEventListener('submit', resetAccountForm);
+resetDepoForm?.addEventListener('submit', resetAccountForm);
+resetWithdrawForm?.addEventListener('submit', resetAccountForm);
+resetTransferForm?.addEventListener('submit', resetAccountForm);
 
 function resetAccountForm(e: any){
     e.preventDefault();
 
     resetForm?.reset();
+    resetDepoForm?.reset();
+    resetWithdrawForm?.reset();
+    resetTransferForm?.reset();
 }
-
 
 const toluAccount = new BankAccount("Tolu Dada", 3567854673, "Savings Account", true, 2348);

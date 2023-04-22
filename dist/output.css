@@ -805,8 +805,8 @@ video {
   width: 30%;
 }
 
-.w-\[50\%\] {
-  width: 50%;
+.w-\[48\%\] {
+  width: 48%;
 }
 
 .w-\[80\%\] {
@@ -815,10 +815,6 @@ video {
 
 .w-\[90\%\] {
   width: 90%;
-}
-
-.w-\[48\%\] {
-  width: 48%;
 }
 
 .flex-shrink {
@@ -2489,6 +2485,11 @@ video {
   border-color: rgb(136 196 23 / var(--tw-border-opacity));
 }
 
+.hover\:bg-\[\#182143\]:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(24 33 67 / var(--tw-bg-opacity));
+}
+
 .hover\:bg-\[\#fff\]:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -2594,6 +2595,11 @@ video {
     padding-top: 11rem;
   }
 
+  .md\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
   .md\:text-4xl {
     font-size: 2.25rem;
     line-height: 2.5rem;
@@ -2671,6 +2677,10 @@ video {
     margin-right: 0.75rem;
   }
 
+  .xl\:mt-16 {
+    margin-top: 4rem;
+  }
+
   .xl\:flex {
     display: flex;
   }
@@ -2691,6 +2701,10 @@ video {
     width: 80%;
   }
 
+  .xl\:pb-5 {
+    padding-bottom: 1.25rem;
+  }
+
   .xl\:pl-24 {
     padding-left: 6rem;
   }
@@ -2705,6 +2719,11 @@ video {
 
   .xl\:pt-52 {
     padding-top: 13rem;
+  }
+
+  .xl\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
   }
 
   .xl\:text-5xl {

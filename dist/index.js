@@ -39,7 +39,7 @@ class BankAccount extends BankingSystem {
         this.hasAtmCard = hasAtm;
         __classPrivateFieldSet(this, _BankAccount_accountPin, accPin, "f");
     }
-    set userDeposit(amount) {
+    userDeposit(amount) {
         if (amount > 0) {
             this.accountBalance += amount;
         }
@@ -47,7 +47,7 @@ class BankAccount extends BankingSystem {
             console.log("Invalid amount");
         }
     }
-    set userWithdrawal(amount) {
+    userWithdrawal(amount) {
         if ((amount <= this.accountBalance) && (amount > 0) && (this.accountBalance !== 0)) {
             this.accountBalance -= amount;
         }
@@ -65,7 +65,7 @@ class BankAccount extends BankingSystem {
         }
     }
     get userAccountBalance() {
-        return this.accountBalance;
+        return `$${this.accountBalance}`;
     }
     get getTypeOfAccount() {
         return this.typeOfAccount;
@@ -83,20 +83,32 @@ class BankAccount extends BankingSystem {
     }
 }
 _BankAccount_accountPin = new WeakMap();
-let createAccount = document === null || document === void 0 ? void 0 : document.getElementById("create-account");
+let createAccount = document.getElementById("create-account");
 let getGlobalBank = document.getElementById("get-global-bank");
 let getUserAccountName = document.getElementById("get-user-account-name");
 let getUserAccountNumber = document.getElementById("get-user-account-number");
 let getUserAccountBalance = document.getElementById("get-user-account-balance");
 let getUserAccountType = document.getElementById("get-user-account-type");
+let userDepositAmount = document.getElementById("deposit");
+let userWithdrawAmount = document.getElementById("withdraw");
+let userTransferAmount = document.getElementById("transfer");
 let resetForm;
 resetForm = document.getElementById("reset-form");
+let resetDepoForm;
+resetDepoForm = document.getElementById("reset-depo-form");
+let resetWithdrawForm;
+resetWithdrawForm = document.getElementById("reset-withdraw-form");
+let resetTransferForm;
+resetTransferForm = document.getElementById("reset-transfer-form");
 createAccount === null || createAccount === void 0 ? void 0 : createAccount.addEventListener('click', createUserAccount);
 getGlobalBank === null || getGlobalBank === void 0 ? void 0 : getGlobalBank.addEventListener('click', getGlobalBankName);
 getUserAccountName === null || getUserAccountName === void 0 ? void 0 : getUserAccountName.addEventListener('click', getMyUserAccountName);
 getUserAccountNumber === null || getUserAccountNumber === void 0 ? void 0 : getUserAccountNumber.addEventListener('click', getMyUserAccountNumber);
 getUserAccountBalance === null || getUserAccountBalance === void 0 ? void 0 : getUserAccountBalance.addEventListener('click', getMyUserAccountBalance);
 getUserAccountType === null || getUserAccountType === void 0 ? void 0 : getUserAccountType.addEventListener('click', getMyUserAccountType);
+userDepositAmount === null || userDepositAmount === void 0 ? void 0 : userDepositAmount.addEventListener('click', myUserDeposit);
+userWithdrawAmount === null || userWithdrawAmount === void 0 ? void 0 : userWithdrawAmount.addEventListener('click', myUserWithdraw);
+userTransferAmount === null || userTransferAmount === void 0 ? void 0 : userTransferAmount.addEventListener('click', myUserTransfer);
 let bamiAccount;
 function createUserAccount(e) {
     e.preventDefault();
@@ -130,7 +142,7 @@ function getMyUserAccountNumber() {
 function getMyUserAccountBalance() {
     if (typeof document !== 'undefined') {
         const myUserAccountBalance = document.querySelector(".insert-account-balance");
-        myUserAccountBalance.innerText = (bamiAccount === null || bamiAccount === void 0 ? void 0 : bamiAccount.userAccountBalance.toString()) || "";
+        myUserAccountBalance.innerText = (bamiAccount === null || bamiAccount === void 0 ? void 0 : bamiAccount.userAccountBalance) || "";
     }
 }
 function getMyUserAccountType() {
@@ -139,10 +151,28 @@ function getMyUserAccountType() {
         myUserAccountType.innerText = (bamiAccount === null || bamiAccount === void 0 ? void 0 : bamiAccount.getTypeOfAccount) || "";
     }
 }
+function myUserDeposit() {
+    const depositAmount = Number(document.getElementById("deposit-amount").value);
+    bamiAccount === null || bamiAccount === void 0 ? void 0 : bamiAccount.userDeposit(depositAmount);
+}
+function myUserWithdraw() {
+    const withdrawAmount = Number(document.getElementById("withdraw-amount").value);
+    bamiAccount === null || bamiAccount === void 0 ? void 0 : bamiAccount.userWithdrawal(withdrawAmount);
+}
+function myUserTransfer() {
+    const transferAmount = Number(document.getElementById("transfer-amount").value);
+    bamiAccount === null || bamiAccount === void 0 ? void 0 : bamiAccount.userTransfer(transferAmount, toluAccount, bamiAccount.getAccountPin);
+}
 resetForm === null || resetForm === void 0 ? void 0 : resetForm.addEventListener('submit', resetAccountForm);
+resetDepoForm === null || resetDepoForm === void 0 ? void 0 : resetDepoForm.addEventListener('submit', resetAccountForm);
+resetWithdrawForm === null || resetWithdrawForm === void 0 ? void 0 : resetWithdrawForm.addEventListener('submit', resetAccountForm);
+resetTransferForm === null || resetTransferForm === void 0 ? void 0 : resetTransferForm.addEventListener('submit', resetAccountForm);
 function resetAccountForm(e) {
     e.preventDefault();
     resetForm === null || resetForm === void 0 ? void 0 : resetForm.reset();
+    resetDepoForm === null || resetDepoForm === void 0 ? void 0 : resetDepoForm.reset();
+    resetWithdrawForm === null || resetWithdrawForm === void 0 ? void 0 : resetWithdrawForm.reset();
+    resetTransferForm === null || resetTransferForm === void 0 ? void 0 : resetTransferForm.reset();
 }
 const toluAccount = new BankAccount("Tolu Dada", 3567854673, "Savings Account", true, 2348);
 //# sourceMappingURL=index.js.map
