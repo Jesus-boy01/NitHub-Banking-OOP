@@ -1,11 +1,1 @@
-/*---- account section ----*/
- /* input[type="text"]{
-    width: 80%;
-} */
 
-@media(max-width: 640px){
-    /*---- account section ----*/
-    input[type="text"]{
-        width: 80%;
-    }
-}

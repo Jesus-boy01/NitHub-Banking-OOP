@@ -40,50 +40,57 @@
     </section>
     <!-- header-section -->
     <section id="header-section" class="xl:w-[80%] m-[auto]">
-        <div class="header py-8 flex justify-between">
+        <div class="header py-8 xl:flex lg:flex md:flex flex justify-between">
             <div class="bank-name">
-                <h2 class="xl:text-5xl lg:text-4xl md:text-4xl sm:text-2xl font-semibold ml-5"><span><i class="ion-cash text-[#88C417] mr-2 xl:text-5xl lg:text-4xl md:text-4xl sm:text-2xl items-center"></i></span>Nit<span class="text-[#88C417]">Bank</span></h2>
+                <h2 class="xl:text-5xl lg:text-4xl md:text-4xl text-4xl font-semibold ml-5"><span><i class="ion-cash text-[#88C417] mr-2 xl:text-5xl lg:text-4xl md:text-4xl sm:text-2xl items-center"></i></span>Nit<span class="text-[#88C417]">Bank</span></h2>
             </div>
-            <div class="header-navs xl:flex lg:flex md:flex sm:flex items-center text-lg font-semibold">
-                <p class="list-none lg:mr-9 md:mr-5 sm:mr-3 border-b-2 border-[#88C417]"><a href="#">Home</a></p>
-                <p class="list-none lg:mr-9 md:mr-5 sm:mr-3 hover:border-b-2 hover:border-[#88C417]"><a href="#">Accounts</a></p>
-                <p class="list-none lg:mr-9 md:mr-5 sm:mr-3 hover:border-b-2 hover:border-[#88C417]"><a href="#">Cards</a></p>
-                <p class="list-none lg:mr-9 md:mr-5 sm:mr-3 hover:border-b-2 hover:border-[#88C417]"><a href="#">Loans</a></p>
-                <p class="list-none lg:mr-9 md:mr-5 sm:mr-3 hover:border-b-2 hover:border-[#88C417]"><a href="#">E-Solutions</a></p>
-                <p class="list-none lg:mr-9 md:mr-5 sm:mr-3 hover:border-b-2 hover:border-[#88C417]"><a href="#">Blog</a></p>
+            <div class="header-navs xl:flex lg:flex md:flex sm:flex flex-wrap items-center text-lg font-semibold">
+                <p class="list-none lg:mr-9 md:mr-5 mr-2 border-b-2 border-[#88C417]"><a href="#">Home</a></p>
+                <p class="list-none lg:mr-9 md:mr-5 mr-2 hover:border-b-2 hover:border-[#88C417]"><a href="#">Accounts</a></p>
+                <p class="list-none lg:mr-9 md:mr-5 mr-2 hover:border-b-2 hover:border-[#88C417]"><a href="#">Cards</a></p>
+                <p class="list-none lg:mr-9 md:mr-5 mr-2 hover:border-b-2 hover:border-[#88C417]"><a href="#">Loans</a></p>
+                <p class="list-none lg:mr-9 md:mr-5 mr-2 hover:border-b-2 hover:border-[#88C417]"><a href="#">E-Solutions</a></p>
+                <p class="list-none lg:mr-9 md:mr-5 mr-2 hover:border-b-2 hover:border-[#88C417]"><a href="#">Blog</a></p>
             </div>
         </div>
     </section>
     <!-- account-section -->
-    <section id="account-section" class="text-white py-20" style="background-image: url('./img/hero-bg.jpg'); height: 100vh; background-size: cover; background-repeat: no-repeat;">
-        <div class="user-account flex flex-wrap justify-evenly">
-            <div class="account-invite xl:w-[40%] lg:w-[40%] md:w-[35%] sm:w-[30%] w-[30%]">
-                <h1 class="xl:text-5xl lg:text-5xl md:text-4xl sm:text-2xl text-xl xl:pl-24 xl:pt-28 lg:pl-16 lg:pt-52 md:pl-10 md:pt-44 pl-6 pt-32 font-semibold">Join us today,<br> Create an account with NitBank</h1>
-                <p class="text-xl xl:pl-24 xl:pt-10 lg:pl-16 lg:pt-10 md:pl-10 md:pt-10 pl-6 pt-6 font-semibold">Your money is safe with us</p>
+    <section id="account-section" class="text-white py-20" style="background-image: url('./img/hero-bg.jpg'); height: auto; background-size: cover; background-repeat: no-repeat;">
+        <div class="user-account xl:flex lg:flex md:flex sm:flex flex-wrap justify-evenly">
+            <div class="account-invite xl:w-[40%] lg:w-[40%] md:w-[35%] sm:w-[30%] w-[100%] mb-5">
+                <h1 class="xl:text-5xl lg:text-5xl md:text-4xl sm:text-2xl text-4xl xl:pl-24 xl:pt-28 lg:pl-16 lg:pt-52 md:pl-10 xl:w-[100%] lg:w-[100%] md:w-[100%] md:pt-44 w-[80%] m-auto font-semibold text-center">Join us today,<br> Create an account with NitBank</h1>
+                <p class="text-2xl xl:pl-24 xl:pt-10 lg:pl-16 lg:pt-10 md:pl-10 md:pt-10 pt-6 w-[80%] m-auto font-semibold text-center">Your money is safe with us</p>
             </div>
             <div class="account-create xl:w-[50%] lg:w-[50%] md:w-[60%] sm:w-[65%]">
-                <form action="#" class="bg-white text-black xl:w-[75%] lg:w-[90%] md:w-[90%] sm:w-[90%] w-[90%] m-auto text-center py-12 rounded" id="reset-form">
+                <form action="#" class="bg-white text-black xl:w-[75%] lg:w-[90%] md:w-[90%] sm:w-[90%] w-[70%] m-auto text-center py-12 rounded" id="reset-form">
                     <div class="form-title pb-7">
                         <p class="text-center text-3xl font-semibold">Create an Account</p>
                     </div>
-                    <div class="row1 flex justify-evenly mb-6">
-                        <div class="name-form">
+                    <div class="row1 xl:flex lg:flex md:flex-wrap justify-evenly mb-6">
+                        <div class="name-form sm:mb-3">
                             <label for="account-name">Account Name:</label><br>
-                            <input type="text" name="acc-name" id="account-name" class="bg-[#ececec] py-1 px-3">
+                            <input type="text" name="acc-name" id="account-name" class="bg-[#ececec] py-1 px-3" required>
                         </div>
                         <div class="number-form">
                             <label for="account-number">Account Number:</label><br>
-                            <input type="number" name="acc-number" id="account-number" pattern="[0-9]{10}" class="bg-[#ececec] py-1 px-3">
+                            <input type="number" name="acc-number" id="account-number" pattern="[0-9]{10}" class="bg-[#ececec] py-1 px-3" required>
                         </div>
                     </div>
-                    <div class="row2 flex justify-evenly mb-6">
-                        <div class="type-account-form">
+                    <div class="row2 xl:flex lg:flex md:flex-wrap justify-evenly mb-6">
+                        <div class="type-account-form sm:mb-3">
                             <label for="account-type">Type Of Account:</label><br>
-                            <input type="text" name="acc-type" id="account-type" class="bg-[#ececec] py-1 px-3">
+                            <select name="acc-type" id="account-type" class="bg-[#ececec] py-1 px-3 xl:w-[13em] lg:w-[13em] md:w-[13em] w-[13em]" required>
+                                <option value="" selected disabled>Choose Account</option>
+                                <option value="Current">Current Account</option>
+                                <option value="Domiciliary">Domiciliary Account</option>
+                                <option value="Savings">Savings Account</option>
+                                <option value="Student">Student Account</option>
+                            </select>
+                            <!-- <input type="text" name="acc-type" id="account-type" class="bg-[#ececec] py-1 px-3"> -->
                         </div>
                         <div class="pin-form">
                             <label for="account-pin">Account Password:</label><br>
-                            <input type="password" name="acc-pin" id="account-pin" class="bg-[#ececec] py-1 px-3 required:">
+                            <input type="password" name="acc-pin" id="account-pin" class="bg-[#ececec] py-1 px-3" required>
                         </div>
                     </div>
                     <div class="row2 mb-6">
@@ -101,10 +108,10 @@
             </div>
         </div>
     </section>
-    <!-- account-details -->
+    <!-- account-information-section -->
     <section id="account-information" class="mt-20">
-        <div class="user-account-info flex flex-wrap">
-            <div class="account-details w-[48%]">
+        <div class="user-account-info xl:flex lg:flex md:flex flex-wrap">
+            <div class="account-details xl:w-[48%] lg:w-[48%] md:w-[48%] w-[100%]">
                 <div class="form-title pb-7 text-center">
                     <p class="text-3xl font-semibold">Account Details</p>
                 </div>
@@ -145,18 +152,18 @@
                 </div>
                 <!-- class=" text-black  lg:w-[90%] md:w-[90%] sm:w-[90%] w-[90%] m-auto text-left py-12 rounded" -->
             </div>
-            <div class="side-image w-[48%]">
-                <img src="img/hero-bg5.jpg" class="mr-3" style="height: 70vh;" alt="">
+            <div class="side-image xl:w-[48%] lg:w-[48%] md:w-[48%] w-[100%]">
+                <img src="img/hero-bg5.jpg" class="xl:mr-3 lg:mr-3 md:mr-3 xl:h-[70vh] lg:h-[90vh] md:h-[90vh] h-[100vh]" alt="">
             </div>
         </div>
     </section>
     <!-- banking-transaction-section -->
-    <section id="banking-transaction-section" class="mt-20" style="background-image: url('./img/hero-bg.jpg'); height: 100vh; background-size: cover; background-repeat: no-repeat;">
+    <section id="banking-transaction-section" class="mt-20 pb-20 md:pt-24" style="background-image: url('./img/hero-bg.jpg'); height: auto; background-size: cover; background-repeat: no-repeat;">
         <div class="banking-transactions flex flex-wrap justify-evenly text-white">
             <div class="make-deposit text-center xl-w[31%] lg-w[31%]">
                 <div class="user-deposit">
-                    <form action="#" class="bg-white text-black xl:w-[75%] lg:w-[90%] md:w-[90%] sm:w-[90%] w-[90%] m-auto text-center py-8 rounded xl:mt-16" id="reset-depo-form">
-                        <div class="form-title xl:text-4xl lg:text-4xl md:text-3xl sm:text-2xl text-xl xl:pb-5 font-semibold">
+                    <form action="#" class="bg-white text-black xl:w-[75%] lg:w-[90%] md:w-[90%] sm:w-[90%] w-[90%] m-auto text-center py-8 rounded xl:mt-16 lg:mt-10 md:mt-10 mt-10" id="reset-depo-form">
+                        <div class="form-title xl:text-4xl lg:text-4xl md:text-3xl sm:text-2xl text-xl xl:pb-5 lg:pb-5 md:pb-5 pb-5 font-semibold">
                             <p class="text-center text-3xl font-semibold">Make A Deposit</p>
                         </div>
                         <div class="account-number-form mb-6">
@@ -179,8 +186,8 @@
             </div>
             <div class="make-withdrawal text-center xl-w[31%] lg-w[31%]">
                 <div class="user-withdrwal">
-                    <form action="#" class="bg-white text-black xl:w-[75%] lg:w-[90%] md:w-[90%] sm:w-[90%] w-[90%] m-auto text-center py-8 rounded xl:mt-16" id="reset-withdraw-form">
-                        <div class="form-title xl:text-4xl lg:text-4xl md:text-3xl sm:text-2xl text-xl xl:pb-5 font-semibold">
+                    <form action="#" class="bg-white text-black xl:w-[75%] lg:w-[90%] md:w-[90%] sm:w-[90%] w-[90%] m-auto text-center py-8 rounded xl:mt-16 lg:mt-10 md:mt-10 mt-10" id="reset-withdraw-form">
+                        <div class="form-title xl:text-4xl lg:text-4xl md:text-3xl sm:text-2xl text-xl xl:pb-5 lg:pb-5 md:pb-5 pb-5 font-semibold">
                             <p class="text-center text-3xl font-semibold">Make A <br>Withdrawal</p>
                         </div>
                         <div class="account-number-form mb-6">
@@ -203,12 +210,12 @@
             </div>
             <div class="make-transfer text-center xl-w[31%] lg-w[31%]">
                 <div class="user-transfer">
-                    <form action="#" class="bg-white text-black xl:w-[75%] lg:w-[90%] md:w-[90%] sm:w-[90%] w-[90%] m-auto text-center py-8 rounded xl:mt-16" id="reset-transfer-form">
-                        <div class="form-title xl:text-4xl lg:text-4xl md:text-3xl sm:text-2xl text-xl xl:pb-5 font-semibold">
+                    <form action="#" class="bg-white text-black xl:w-[75%] lg:w-[90%] md:w-[90%] sm:w-[90%] w-[90%] m-auto text-center py-8 rounded xl:mt-16 lg:mt-10 md:mt-10 mt-10" id="reset-transfer-form">
+                        <div class="form-title xl:text-4xl lg:text-4xl md:text-3xl sm:text-2xl text-xl xl:pb-5 lg:pb-5 md:pb-5 pb-5 font-semibold">
                             <p class="text-center text-3xl font-semibold">Make A Transfer</p>
                         </div>
                         <div class="account-number-form mb-6">
-                            <label for="transfer-account-number">Account Number:</label>
+                            <label for="transfer-account-number">Account Number:</label><br>
                             <input type="number" name="transfer-acc-number" id="transfer-account-number" pattern="[0-9]{10}" class="bg-[#ececec] py-1 px-3">
                         </div>
                         <div class="recipient-number-form mb-6">
@@ -216,11 +223,11 @@
                             <input type="number" name="transfer-rec-acc-number" id="transfer-recipient-account-number" pattern="[0-9]{10}" class="bg-[#ececec] py-1 px-3">
                         </div>
                         <div class="amount-form mb-6">
-                            <label for="transfer-amount">Amount To Transfer:</label>
+                            <label for="transfer-amount">Amount To Transfer:</label><br>
                             <input type="number" name="transfer-amount" id="transfer-amount" pattern="[0-9]{10}" class="bg-[#ececec] py-1 px-3">
                         </div>
                         <div class="pin-form mb-6">
-                            <label for="transfer-account-pin">Account Password:</label>
+                            <label for="transfer-account-pin">Account Password:</label><br>
                             <input type="password" name="transfer-acc-pin" id="transfer-account-pin" class="bg-[#ececec] py-1 px-3 required:">
                         </div>
                         <div class="submit-form mb-6">
