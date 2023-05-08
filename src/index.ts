@@ -243,14 +243,12 @@ function myUserDeposit(){
     const depositAmount = Number((document.getElementById("deposit-amount") as HTMLInputElement).value);
     const depositPin = document.getElementById("depo-account-pin") as HTMLInputElement;
     myAccount?.userDeposit(depositAmount, depositPin.value);
-    userBalance.innerText = toluAccount.userAccountBalance;
 }
 
 function myUserWithdraw(){
     const withdrawAmount = Number((document.getElementById("withdraw-amount") as HTMLInputElement).value);
     const withdrawPin = document.getElementById("withdraw-account-pin") as HTMLInputElement;
     myAccount?.userWithdrawal(withdrawAmount, withdrawPin.value);
-    userBalance.innerText = toluAccount.userAccountBalance;
 }
 
 function myUserTransfer(){

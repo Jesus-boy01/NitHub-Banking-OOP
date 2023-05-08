@@ -189,13 +189,11 @@ function myUserDeposit() {
     const depositAmount = Number(document.getElementById("deposit-amount").value);
     const depositPin = document.getElementById("depo-account-pin");
     myAccount === null || myAccount === void 0 ? void 0 : myAccount.userDeposit(depositAmount, depositPin.value);
-    userBalance.innerText = toluAccount.userAccountBalance;
 }
 function myUserWithdraw() {
     const withdrawAmount = Number(document.getElementById("withdraw-amount").value);
     const withdrawPin = document.getElementById("withdraw-account-pin");
     myAccount === null || myAccount === void 0 ? void 0 : myAccount.userWithdrawal(withdrawAmount, withdrawPin.value);
-    userBalance.innerText = toluAccount.userAccountBalance;
 }
 function myUserTransfer() {
     const transferAmount = Number(document.getElementById("transfer-amount").value);
