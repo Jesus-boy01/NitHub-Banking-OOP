@@ -46,7 +46,7 @@
             </div>
             <div class="header-navs xl:flex lg:flex md:flex sm:flex flex-wrap items-center text-lg font-semibold">
                 <p class="list-none lg:mr-9 md:mr-5 mr-2 border-b-2 border-[#88C417]"><a href="#">Home</a></p>
-                <p class="list-none lg:mr-9 md:mr-5 mr-2 hover:border-b-2 hover:border-[#88C417]"><a href="#">Accounts</a></p>
+                <p class="list-none lg:mr-9 md:mr-5 mr-2 hover:border-b-2 hover:border-[#88C417]"><a href="#my-user-section">Accounts</a></p>
                 <p class="list-none lg:mr-9 md:mr-5 mr-2 hover:border-b-2 hover:border-[#88C417]"><a href="#">Cards</a></p>
                 <p class="list-none lg:mr-9 md:mr-5 mr-2 hover:border-b-2 hover:border-[#88C417]"><a href="#">Loans</a></p>
                 <p class="list-none lg:mr-9 md:mr-5 mr-2 hover:border-b-2 hover:border-[#88C417]"><a href="#">E-Solutions</a></p>
@@ -67,17 +67,17 @@
                         <p class="text-center text-3xl font-semibold">Create an Account</p>
                     </div>
                     <div class="row1 xl:flex lg:flex md:flex-wrap justify-evenly mb-6">
-                        <div class="name-form sm:mb-3">
+                        <div class="name-form xl:mb-0 lg:mb-0 md:mb-0 mb-5">
                             <label for="account-name">Account Name:</label><br>
                             <input type="text" name="acc-name" id="account-name" class="bg-[#ececec] py-1 px-3" required>
                         </div>
-                        <div class="number-form">
+                        <div class="number-form xl:mb-0 lg:mb-0 md:mb-0 mb-5">
                             <label for="account-number">Account Number:</label><br>
                             <input type="number" name="acc-number" id="account-number" pattern="[0-9]{10}" class="bg-[#ececec] py-1 px-3" required>
                         </div>
                     </div>
                     <div class="row2 xl:flex lg:flex md:flex-wrap justify-evenly mb-6">
-                        <div class="type-account-form sm:mb-3">
+                        <div class="type-account-form xl:mb-0 lg:mb-0 md:mb-0 mb-5">
                             <label for="account-type">Type Of Account:</label><br>
                             <select name="acc-type" id="account-type" class="bg-[#ececec] py-1 px-3 xl:w-[13em] lg:w-[13em] md:w-[13em] w-[13em]" required>
                                 <option value="" selected disabled>Choose Account</option>
@@ -88,7 +88,7 @@
                             </select>
                             <!-- <input type="text" name="acc-type" id="account-type" class="bg-[#ececec] py-1 px-3"> -->
                         </div>
-                        <div class="pin-form">
+                        <div class="pin-form xl:mb-0">
                             <label for="account-pin">Account Password:</label><br>
                             <input type="password" name="acc-pin" id="account-pin" class="bg-[#ececec] py-1 px-3" required>
                         </div>
@@ -157,8 +157,38 @@
             </div>
         </div>
     </section>
+    <!-- my-user-section -->
+    <section id="my-user-section" class="h-[100%] mt-20">
+        <div id="my-user-account" class="bg-[#fdfdfd] pb-20">
+            <div class="my-user-account-title text-center py-10">
+                <h2 class="text-3xl font-semibold">My User Account</h2>
+            </div>
+            <div class="my-user-account-information xl:w-[60%] lg:w-[60%] md:w-[60%] m-auto">
+                <div class="row-1 xl:flex lg:flex md:flex sm:flex flex justify-between">
+                    <div class="my-user-account-name w-[48%] xl:mb-5 text-center">
+                        <label for="my-user-name">Account Name:</label>
+                        <p class="bg-[#fafafa] px-2 xl:text-lg py-2 rounded" id="user-name"></p>
+                    </div>
+                    <div class="my-user-account-number w-[48%] xl:mb-5 text-center">
+                        <label for="my-user-number">Account Number:</label>
+                        <p class="bg-[#fafafa] px-2 xl:text-lg py-2 rounded" id="user-number"></p>
+                    </div>
+                </div>
+                <div class="row-2 xl:flex lg:flex md:flex sm:flex flex justify-between">
+                    <div class="my-user-account-balance w-[48%] text-center">
+                        <label for="my-user-balance">Account Balance:</label>
+                        <p class="bg-[#fafafa] px-2 xl:text-lg py-2 rounded" id="user-balance"></p>
+                    </div>
+                    <div class="my-user-account-type w-[48%] text-center">
+                        <label for="my-user-type">Account Type:</label>
+                        <p class="bg-[#fafafa] px-2 xl:text-lg py-2 rounded" id="user-type"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- banking-transaction-section -->
-    <section id="banking-transaction-section" class="mt-20 pb-20 md:pt-24" style="background-image: url('./img/hero-bg.jpg'); height: auto; background-size: cover; background-repeat: no-repeat;">
+    <section id="banking-transaction-section" class="pb-20 md:pt-24" style="background-image: url('./img/hero-bg.jpg'); height: auto; background-size: cover; background-repeat: no-repeat;">
         <div class="banking-transactions flex flex-wrap justify-evenly text-white">
             <div class="make-deposit text-center xl-w[31%] lg-w[31%]">
                 <div class="user-deposit">
