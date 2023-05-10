@@ -97,13 +97,14 @@ class BankAccount extends BankingSystem {
 
     userTransfer(amount: number, transferAccount: object | any, pin: string) {
         const accountExists = this.existenceOfAccount(this, transferAccount);
+        const pinVerification = this.verifyPin(pin);        
         if (accountExists && this.verifyPin(pin) && this.accountBalance >= amount) {
             this.accountBalance -= amount;
             transferAccount.accountBalance += amount;
             alert("Successful");
         } else if (!accountExists) {
             alert("The recipient account does not exist in NitBank Banking System");
-        } else if (!this.verifyPin(pin)) {
+        } else if (!pinVerification) {
             alert("Invalid PIN");
         } else {
             alert("Insufficient Funds");
@@ -253,8 +254,8 @@ function myUserWithdraw(){
 
 function myUserTransfer(){
     const transferAmount = Number((document.getElementById("transfer-amount") as HTMLInputElement).value);
-
-    myAccount?.userTransfer(transferAmount, toluAccount, myAccount.getAccountPin);  
+    const transferPin = document.getElementById("transfer-account-pin") as HTMLInputElement;
+    myAccount?.userTransfer(transferAmount, toluAccount, transferPin.value);  
     userBalance.innerText = toluAccount.userAccountBalance;  
 }
 
