@@ -26,7 +26,7 @@ class BankingSystem {
         return this.accountNumber;
     }
     existenceOfAccount(account1, account2) {
-        return account1.constructor === account2.constructor;
+        return account1.getAccountNumber === account2.getAccountNumber;
     }
 }
 BankingSystem.bankName = "NitBank";
@@ -40,55 +40,57 @@ class BankAccount extends BankingSystem {
         __classPrivateFieldSet(this, _BankAccount_accountPin, accPin, "f");
     }
     userDeposit(amount, pin) {
-        switch (true) {
-            case (amount > 0 && this.verifyPin(pin)):
-                this.accountBalance += amount;
-                alert("Successful");
-                break;
-            case (!this.verifyPin(pin)):
-                alert("Invalid PIN");
-                break;
-            case (amount <= 0):
-                alert("Invalid Amount");
-                break;
+        const pinVerified = this.verifyPin(pin);
+        if (amount < 0) {
+            alert("Invalid Amount");
+            return;
         }
+        if (!pinVerified) {
+            alert("Invalid Pin");
+            return;
+        }
+        this.accountBalance += amount;
+        alert("Successful");
     }
     userWithdrawal(amount, pin) {
-        switch (true) {
-            case (amount <= this.accountBalance && this.accountBalance !== 0):
-                if (amount > 0 && pin.length === 4 && this.verifyPin(pin)) {
-                    this.accountBalance -= amount;
-                    alert("Successful");
-                }
-                else if (amount <= 0) {
-                    alert("Invalid Amount");
-                }
-                else {
-                    alert("Invalid PIN");
-                }
-                break;
-            case (amount > this.accountBalance):
-                alert("Insufficient Funds");
-                break;
+        const pinVerified = this.verifyPin(pin);
+        if (amount > this.accountBalance) {
+            alert("Insufficient Funds");
+            return;
         }
+        if (amount <= 0) {
+            alert("Invalid Amount");
+            return;
+        }
+        if (!pinVerified) {
+            alert("Invalid PIN");
+            return;
+        }
+        this.accountBalance -= amount;
+        alert("Successful");
     }
     userTransfer(amount, transferAccount, pin) {
         const accountExists = this.existenceOfAccount(this, transferAccount);
-        const pinVerification = this.verifyPin(pin);
-        if (accountExists && this.verifyPin(pin) && this.accountBalance >= amount) {
-            this.accountBalance -= amount;
-            transferAccount.accountBalance += amount;
-            alert("Successful");
-        }
-        else if (!accountExists) {
+        const pinVerified = this.verifyPin(pin);
+        if (!accountExists) {
             alert("The recipient account does not exist in NitBank Banking System");
+            return;
         }
-        else if (!pinVerification) {
+        if (!pinVerified) {
             alert("Invalid PIN");
+            return;
         }
-        else {
+        if (this.accountBalance < amount) {
             alert("Insufficient Funds");
+            return;
         }
+        if (amount <= 0) {
+            alert("Invalid Amount");
+            return;
+        }
+        this.accountBalance -= amount;
+        transferAccount.accountBalance += amount;
+        alert("Successful");
     }
     get userAccountBalance() {
         return `$${this.accountBalance}`;
@@ -100,12 +102,7 @@ class BankAccount extends BankingSystem {
         return __classPrivateFieldGet(this, _BankAccount_accountPin, "f");
     }
     verifyPin(pin) {
-        if (__classPrivateFieldGet(this, _BankAccount_accountPin, "f") === pin) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return (__classPrivateFieldGet(this, _BankAccount_accountPin, "f") === pin);
     }
 }
 _BankAccount_accountPin = new WeakMap();
@@ -153,35 +150,42 @@ function createUserAccount(e) {
     const possessAtm = document === null || document === void 0 ? void 0 : document.getElementById("possess-atm");
     const boolPossessAtm = (possessAtm.value.toLowerCase() === "true");
     const userAccountPin = document === null || document === void 0 ? void 0 : document.getElementById("account-pin");
+    if ((userAccountName.value === "") && (userAccountNumber.value === "") &&
+        (userAccountType.value === "") && (userAccountPin.value === "")) {
+        alert("Account Details must be filled");
+        return;
+    }
     myAccount = new BankAccount(userAccountName.value, Number(userAccountNumber.value), userAccountType.value, boolPossessAtm, userAccountPin.value);
+    alert("Successful");
     resetAccountForm(e);
 }
+const isDefined = typeof document !== "undefined";
 function getGlobalBankName() {
-    if (typeof document !== 'undefined') {
+    if (isDefined) {
         const globalBankName = document.querySelector(".insert-bank-name");
         globalBankName.innerText = (myAccount === null || myAccount === void 0 ? void 0 : myAccount.getBankName) || "";
     }
 }
 function getMyUserAccountName() {
-    if (typeof document !== 'undefined') {
+    if (isDefined) {
         const myUserAccountName = document.querySelector(".insert-account-name");
         myUserAccountName.innerText = (myAccount === null || myAccount === void 0 ? void 0 : myAccount.getAccountName) || "";
     }
 }
 function getMyUserAccountNumber() {
-    if (typeof document !== 'undefined') {
+    if (isDefined) {
         const myUserAccountNumber = document.querySelector(".insert-account-number");
         myUserAccountNumber.innerText = (myAccount === null || myAccount === void 0 ? void 0 : myAccount.getAccountNumber.toString()) || "";
     }
 }
 function getMyUserAccountBalance() {
-    if (typeof document !== 'undefined') {
+    if (isDefined) {
         const myUserAccountBalance = document.querySelector(".insert-account-balance");
         myUserAccountBalance.innerText = (myAccount === null || myAccount === void 0 ? void 0 : myAccount.userAccountBalance) || "";
     }
 }
 function getMyUserAccountType() {
-    if (typeof document !== 'undefined') {
+    if (isDefined) {
         const myUserAccountType = document.querySelector(".insert-account-type");
         myUserAccountType.innerText = (myAccount === null || myAccount === void 0 ? void 0 : myAccount.getTypeOfAccount) || "";
     }

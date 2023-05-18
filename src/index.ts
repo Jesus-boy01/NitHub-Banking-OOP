@@ -20,9 +20,9 @@ class BankingSystem {
         return this.accountNumber;
     }
 
-    existenceOfAccount(account1: object, account2: object): boolean {
-        return account1.constructor === account2.constructor
-    }
+    existenceOfAccount(account1: BankingSystem, account2: BankingSystem): boolean {
+        return account1.getAccountNumber === account2.getAccountNumber;
+    }      
 }
 
 class BankAccount extends BankingSystem {
@@ -39,83 +39,66 @@ class BankAccount extends BankingSystem {
     }
 
     userDeposit(amount: number, pin: string) {
-        switch (true) {
-            case (amount > 0 && this.verifyPin(pin)):
-                this.accountBalance += amount;
-                alert("Successful");
-                break;
-            case (!this.verifyPin(pin)):
-                alert("Invalid PIN");
-                break;
-            case (amount <= 0):
-                alert("Invalid Amount");
-                break;
+        const pinVerified = this.verifyPin(pin);
+        if (amount < 0) {
+            alert("Invalid Amount");
+            return;
+        } 
+        if (!pinVerified){
+            alert("Invalid Pin");
+            return;
         }
-                    
-        // if (amount > 0) {
-        //     if (this.verifyPin(pin)){
-        //         this.accountBalance += amount;
-        //     } else{
-        //         alert("Invalid Pin");
-        //     }
-        // } else {
-        //     alert("Invalid amount");
-        // }
+        this.accountBalance += amount;
+        alert("Successful");    
     }
 
-    userWithdrawal(amount: number, pin: string) {    
-        switch (true) {
-            case (amount <= this.accountBalance && this.accountBalance !== 0):
-              if (amount > 0 && pin.length === 4 && this.verifyPin(pin)) {
-                this.accountBalance -= amount;
-                alert("Successful");
-              } else if (amount <= 0) {
-                alert("Invalid Amount");
-              } else {
-                alert("Invalid PIN");
-              }
-              break;
-            case (amount > this.accountBalance):
-              alert("Insufficient Funds");
-              break;
-          }
-              
-        // if ((amount <= this.accountBalance) && (this.accountBalance !== 0)) {
-        //     if (amount > 0){
-        //         if ((pin.length === 4) && (this.verifyPin(pin))) {
-        //             this.accountBalance -= amount;
-        //         } else {
-        //             alert("Invalid Pin");
-        //         }
-        //     } else {
-        //         alert("Invalid Amount");
-        //     }
-        // } else {
-        //     alert("Insufficient funds");
-        // }
+    userWithdrawal(amount: number, pin: string) { 
+        const pinVerified = this.verifyPin(pin);   
+        if (amount > this.accountBalance) {
+            alert("Insufficient Funds");
+            return;
+        } 
+
+        if (amount <= 0) {
+            alert("Invalid Amount");
+            return;
+        } 
+
+        if (!pinVerified) {
+            alert("Invalid PIN");
+            return;
+        } 
+
+        this.accountBalance -= amount;
+        alert("Successful");
     }
 
     userTransfer(amount: number, transferAccount: object | any, pin: string) {
         const accountExists = this.existenceOfAccount(this, transferAccount);
-        const pinVerification = this.verifyPin(pin);        
-        if (accountExists && this.verifyPin(pin) && this.accountBalance >= amount) {
-            this.accountBalance -= amount;
-            transferAccount.accountBalance += amount;
-            alert("Successful");
-        } else if (!accountExists) {
+        const pinVerified = this.verifyPin(pin);        
+        if (!accountExists) {
             alert("The recipient account does not exist in NitBank Banking System");
-        } else if (!pinVerification) {
+            return;
+        }
+        
+        if (!pinVerified) {
             alert("Invalid PIN");
-        } else {
+            return;
+        }
+        
+        if (this.accountBalance < amount){
             alert("Insufficient Funds");
+            return;
         }
 
-        // if ((this.existenceOfAccount(this, transferAccount)) && (this.verifyPin(pin)) && (this.accountBalance >= amount)) {
-        //     this.accountBalance -= amount;
-        //     transferAccount.accountBalance += amount;
-        // } else {
-        //     alert("This account does not exist in NitBank Banking System or Invalid amount");
-        // }
+        if (amount <= 0){
+            alert("Invalid Amount");
+            return;
+        }
+
+        this.accountBalance -= amount;
+        transferAccount.accountBalance += amount;
+        alert("Successful");
     }
 
     get userAccountBalance(): string {
@@ -131,11 +114,7 @@ class BankAccount extends BankingSystem {
     }
 
     verifyPin(pin: string): boolean {
-        if (this.#accountPin === pin) {
-            return true;
-        } else {
-            return false;
-        }
+        return (this.#accountPin === pin)
     }
 }
 
@@ -193,15 +172,23 @@ function createUserAccount(e?: any) {
     const boolPossessAtm = (possessAtm.value.toLowerCase() === "true");
     const userAccountPin = document?.getElementById("account-pin") as HTMLInputElement;
 
+    if((userAccountName.value === "") && (userAccountNumber.value === "") && 
+    (userAccountType.value === "") && (userAccountPin.value === "")) {
+        alert("Account Details must be filled");
+        return;
+    }
 
-    myAccount = new BankAccount(userAccountName.value, Number(userAccountNumber.value),userAccountType.value, boolPossessAtm, userAccountPin.value); 
+    myAccount = new BankAccount(userAccountName.value, Number(userAccountNumber.value), userAccountType.value, boolPossessAtm, userAccountPin.value); 
+
+    alert("Successful");
 
     resetAccountForm(e);
 }
 
+const isDefined = typeof document !== "undefined";
 
 function getGlobalBankName(){
-    if (typeof document !== 'undefined') {
+    if (isDefined) {
         const globalBankName = document.querySelector(".insert-bank-name") as HTMLParagraphElement;
 
         globalBankName.innerText = myAccount?.getBankName || "";
@@ -209,7 +196,7 @@ function getGlobalBankName(){
 }
 
 function getMyUserAccountName(){
-    if (typeof document !== 'undefined') {
+    if (isDefined) {
         const myUserAccountName = document.querySelector(".insert-account-name") as HTMLParagraphElement;
 
         myUserAccountName.innerText = myAccount?.getAccountName || "";
@@ -217,7 +204,7 @@ function getMyUserAccountName(){
 }
 
 function getMyUserAccountNumber(){
-    if (typeof document !== 'undefined') {
+    if (isDefined) {
         const myUserAccountNumber = document.querySelector(".insert-account-number") as HTMLParagraphElement;
 
         myUserAccountNumber.innerText = myAccount?.getAccountNumber.toString() || "";
@@ -225,7 +212,7 @@ function getMyUserAccountNumber(){
 }
 
 function getMyUserAccountBalance(){
-    if (typeof document !== 'undefined') {
+    if (isDefined) {
         const myUserAccountBalance = document.querySelector(".insert-account-balance") as HTMLParagraphElement;
 
         myUserAccountBalance.innerText = myAccount?.userAccountBalance || "";
@@ -233,7 +220,7 @@ function getMyUserAccountBalance(){
 }
 
 function getMyUserAccountType(){
-    if (typeof document !== 'undefined') {
+    if (isDefined) {
         const myUserAccountType = document.querySelector(".insert-account-type") as HTMLParagraphElement;
 
         myUserAccountType.innerText = myAccount?.getTypeOfAccount || "";
