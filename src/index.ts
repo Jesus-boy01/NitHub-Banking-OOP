@@ -20,8 +20,8 @@ class BankingSystem {
         return this.accountNumber;
     }
 
-    existenceOfAccount(account1: BankingSystem, account2: BankingSystem): boolean {
-        return account1.getAccountNumber === account2.getAccountNumber;
+    existenceOfAccount(account1: string, account2: BankingSystem): boolean {
+        return Number(account1) === account2.getAccountNumber;
     }      
 }
 
@@ -74,7 +74,7 @@ class BankAccount extends BankingSystem {
     }
 
     userTransfer(amount: number, transferAccount: object | any, pin: string) {
-        const accountExists = this.existenceOfAccount(this, transferAccount);
+        const accountExists = this.existenceOfAccount(getRecepientAccountNumber.value, transferAccount);
         const pinVerified = this.verifyPin(pin);        
         if (!accountExists) {
             alert("The recipient account does not exist in NitBank Banking System");
@@ -125,6 +125,7 @@ let getUserAccountName = document.getElementById("get-user-account-name");
 let getUserAccountNumber = document.getElementById("get-user-account-number");
 let getUserAccountBalance = document.getElementById("get-user-account-balance");
 let getUserAccountType = document.getElementById("get-user-account-type");
+let getRecepientAccountNumber = document.getElementById("transfer-recipient-account-number") as HTMLInputElement;
 let userDepositAmount = document.getElementById("deposit");
 let userWithdrawAmount = document.getElementById("withdraw");
 let userTransferAmount = document.getElementById("transfer");
@@ -143,12 +144,13 @@ getGlobalBank?.addEventListener('click', getGlobalBankName);
 getUserAccountName?.addEventListener('click', getMyUserAccountName);
 getUserAccountNumber?.addEventListener('click', getMyUserAccountNumber);
 getUserAccountBalance?.addEventListener('click', getMyUserAccountBalance);
+getUserAccountBalance?.addEventListener('click', updateAccountBalance);
 getUserAccountType?.addEventListener('click', getMyUserAccountType);
 userDepositAmount?.addEventListener('click', myUserDeposit);
 userWithdrawAmount?.addEventListener('click', myUserWithdraw);
 userTransferAmount?.addEventListener('click', myUserTransfer);
 
-const toluAccount = new BankAccount("Tolu Dada", 3567854673, "Savings Account", true, "2348");
+const toluAccount = new BankAccount("Tolu Dada", 356785467, "Savings Account", true, "2348");
 
 let userName = document.getElementById("user-name") as HTMLParagraphElement;
 let userNumber = document.getElementById("user-number") as HTMLParagraphElement;
@@ -227,24 +229,39 @@ function getMyUserAccountType(){
     }
 }
 
+function updateAccountBalance(){
+    const updateBalance = document.querySelector(".update-balance") as HTMLParagraphElement; 
+
+    updateBalance.innerText = myAccount?.userAccountBalance || "";
+}
+
 function myUserDeposit(){
     const depositAmount = Number((document.getElementById("deposit-amount") as HTMLInputElement).value);
     const depositPin = document.getElementById("depo-account-pin") as HTMLInputElement;
     myAccount?.userDeposit(depositAmount, depositPin.value);
+
+    updateAccountBalance();
 }
 
 function myUserWithdraw(){
     const withdrawAmount = Number((document.getElementById("withdraw-amount") as HTMLInputElement).value);
     const withdrawPin = document.getElementById("withdraw-account-pin") as HTMLInputElement;
     myAccount?.userWithdrawal(withdrawAmount, withdrawPin.value);
+    
+    updateAccountBalance();
 }
 
 function myUserTransfer(){
+    let recipientAccountNumber = document.getElementById("transfer-recipient-account-number") as HTMLInputElement;
+    console.log(recipientAccountNumber.value);
+
     const transferAmount = Number((document.getElementById("transfer-amount") as HTMLInputElement).value);
     const transferPin = document.getElementById("transfer-account-pin") as HTMLInputElement;
-    myAccount?.userTransfer(transferAmount, toluAccount, transferPin.value);  
-    userBalance.innerText = toluAccount.userAccountBalance;  
-}
+    myAccount?.userTransfer(transferAmount, toluAccount, transferPin.value);
+    userBalance.innerText = toluAccount.userAccountBalance; 
+    
+    updateAccountBalance();
+}   
 
 resetForm?.addEventListener('submit', resetAccountForm);
 resetDepoForm?.addEventListener('submit', resetAccountForm);

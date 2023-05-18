@@ -26,7 +26,9 @@ class BankingSystem {
         return this.accountNumber;
     }
     existenceOfAccount(account1, account2) {
-        return account1.getAccountNumber === account2.getAccountNumber;
+        console.log(account1);
+        console.log(account2.getAccountNumber);
+        return Number(account1) === account2.getAccountNumber;
     }
 }
 BankingSystem.bankName = "NitBank";
@@ -70,7 +72,7 @@ class BankAccount extends BankingSystem {
         alert("Successful");
     }
     userTransfer(amount, transferAccount, pin) {
-        const accountExists = this.existenceOfAccount(this, transferAccount);
+        const accountExists = this.existenceOfAccount(getRecepientAccountNumber.value, transferAccount);
         const pinVerified = this.verifyPin(pin);
         if (!accountExists) {
             alert("The recipient account does not exist in NitBank Banking System");
@@ -112,6 +114,7 @@ let getUserAccountName = document.getElementById("get-user-account-name");
 let getUserAccountNumber = document.getElementById("get-user-account-number");
 let getUserAccountBalance = document.getElementById("get-user-account-balance");
 let getUserAccountType = document.getElementById("get-user-account-type");
+let getRecepientAccountNumber = document.getElementById("transfer-recipient-account-number");
 let userDepositAmount = document.getElementById("deposit");
 let userWithdrawAmount = document.getElementById("withdraw");
 let userTransferAmount = document.getElementById("transfer");
@@ -128,11 +131,12 @@ getGlobalBank === null || getGlobalBank === void 0 ? void 0 : getGlobalBank.addE
 getUserAccountName === null || getUserAccountName === void 0 ? void 0 : getUserAccountName.addEventListener('click', getMyUserAccountName);
 getUserAccountNumber === null || getUserAccountNumber === void 0 ? void 0 : getUserAccountNumber.addEventListener('click', getMyUserAccountNumber);
 getUserAccountBalance === null || getUserAccountBalance === void 0 ? void 0 : getUserAccountBalance.addEventListener('click', getMyUserAccountBalance);
+getUserAccountBalance === null || getUserAccountBalance === void 0 ? void 0 : getUserAccountBalance.addEventListener('click', updateAccountBalance);
 getUserAccountType === null || getUserAccountType === void 0 ? void 0 : getUserAccountType.addEventListener('click', getMyUserAccountType);
 userDepositAmount === null || userDepositAmount === void 0 ? void 0 : userDepositAmount.addEventListener('click', myUserDeposit);
 userWithdrawAmount === null || userWithdrawAmount === void 0 ? void 0 : userWithdrawAmount.addEventListener('click', myUserWithdraw);
 userTransferAmount === null || userTransferAmount === void 0 ? void 0 : userTransferAmount.addEventListener('click', myUserTransfer);
-const toluAccount = new BankAccount("Tolu Dada", 3567854673, "Savings Account", true, "2348");
+const toluAccount = new BankAccount("Tolu Dada", 356785467, "Savings Account", true, "2348");
 let userName = document.getElementById("user-name");
 let userNumber = document.getElementById("user-number");
 let userBalance = document.getElementById("user-balance");
@@ -190,21 +194,30 @@ function getMyUserAccountType() {
         myUserAccountType.innerText = (myAccount === null || myAccount === void 0 ? void 0 : myAccount.getTypeOfAccount) || "";
     }
 }
+function updateAccountBalance() {
+    const updateBalance = document.querySelector(".update-balance");
+    updateBalance.innerText = (myAccount === null || myAccount === void 0 ? void 0 : myAccount.userAccountBalance) || "";
+}
 function myUserDeposit() {
     const depositAmount = Number(document.getElementById("deposit-amount").value);
     const depositPin = document.getElementById("depo-account-pin");
     myAccount === null || myAccount === void 0 ? void 0 : myAccount.userDeposit(depositAmount, depositPin.value);
+    updateAccountBalance();
 }
 function myUserWithdraw() {
     const withdrawAmount = Number(document.getElementById("withdraw-amount").value);
     const withdrawPin = document.getElementById("withdraw-account-pin");
     myAccount === null || myAccount === void 0 ? void 0 : myAccount.userWithdrawal(withdrawAmount, withdrawPin.value);
+    updateAccountBalance();
 }
 function myUserTransfer() {
+    let recipientAccountNumber = document.getElementById("transfer-recipient-account-number");
+    console.log(recipientAccountNumber.value);
     const transferAmount = Number(document.getElementById("transfer-amount").value);
     const transferPin = document.getElementById("transfer-account-pin");
     myAccount === null || myAccount === void 0 ? void 0 : myAccount.userTransfer(transferAmount, toluAccount, transferPin.value);
     userBalance.innerText = toluAccount.userAccountBalance;
+    updateAccountBalance();
 }
 resetForm === null || resetForm === void 0 ? void 0 : resetForm.addEventListener('submit', resetAccountForm);
 resetDepoForm === null || resetDepoForm === void 0 ? void 0 : resetDepoForm.addEventListener('submit', resetAccountForm);
